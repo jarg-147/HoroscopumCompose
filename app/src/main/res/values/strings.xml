@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">HoroscopumCompose</string>
+
+    <!-- Signs -->
+    <string name="capricorn">Capricorn</string>
+    <string name="capricorn_date" translatable="false">22/12 – 19/01</string>
+    <string name="aquarium">Aquarius</string>
+    <string name="aquarium_date" translatable="false">20/01 – 18/02</string>
+    <string name="pisces">Pisces</string>
+    <string name="pisces_date" translatable="false">19/02 – 20/03</string>
+    <string name="aries">Aries</string>
+    <string name="aries_date">21/03 – 19/04</string>
+    <string name="taurus">Taurus</string>
+    <string name="taurus_date" translatable="false">20/04 – 20/05</string>
+    <string name="gemini">Gemini</string>
+    <string name="gemini_date" translatable="false">21/05 – 20/06</string>
+    <string name="cancer">Cancer</string>
+    <string name="cancer_date" translatable="false">21/06 – 22/07</string>
+    <string name="leo">Leo</string>
+    <string name="leo_date" translatable="false">23/07 – 22/08</string>
+    <string name="virgo">Virgo</string>
+    <string name="virgo_date" translatable="false">23/08 – 22/09</string>
+    <string name="libra">Libra</string>
+    <string name="libra_date" translatable="false">23/09 – 22/10</string>
+    <string name="scorpio">Scorpio</string>
+    <string name="scorpio_date" translatable="false">23/10 – 21/11</string>
+    <string name="sagittarius">Sagittarius</string>
+    <string name="sagittarius_date" translatable="false">22/11 – 21/12</string>
+
 </resources>
