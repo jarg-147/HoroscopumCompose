@@ -33,6 +33,7 @@ val universityOfTennesseeOrange = Color(0xFFf98500)
 
 val magicCarpet = Color(0xFF9186BF)
 val swissPlum = Color(0xFF5f4bbc)
+val mediumSlateBlue = Color(0xFF8169F0)
 val blueGem = Color(0xFF49398F)
 val benikakehanaPurple = Color(0xFF595275)
 val midnightPurple = Color(0xFF2D033B)
@@ -43,7 +44,14 @@ val loveCloud = Color(0xFFE5B8F4)
 
 val Colors.splashBackgroundColor: Color
     get() = if (isLight) {
-        loveCloud
+        benikakehanaPurple
     } else {
-        midnightPurple
+        illicitDarkness
+    }
+
+val Colors.homeButtonColor: Color
+    get() = if (isLight) {
+        mediumSlateBlue
+    } else {
+        swissPlum
     }
