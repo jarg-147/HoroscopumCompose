@@ -87,3 +87,4 @@ lint/tmp/
 /gradle.properties
 /gradlew
 /gradlew.bat
+/.idea/deploymentTargetDropDown.xml
