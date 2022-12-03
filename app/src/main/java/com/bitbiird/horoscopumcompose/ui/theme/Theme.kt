@@ -37,7 +37,7 @@ fun HoroscopumComposeTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: 
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = HoroscopumTypography,
         shapes = Shapes,
         content = content
     )

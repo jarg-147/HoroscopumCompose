@@ -1,5 +1,6 @@
 package com.bitbiird.horoscopumcompose.ui.theme
 
+import androidx.compose.material.Colors
 import androidx.compose.ui.graphics.Color
 
 // Default
@@ -34,3 +35,15 @@ val magicCarpet = Color(0xFF9186BF)
 val swissPlum = Color(0xFF5f4bbc)
 val blueGem = Color(0xFF49398F)
 val benikakehanaPurple = Color(0xFF595275)
+val midnightPurple = Color(0xFF2D033B)
+val shadeOfViolet = Color(0xFF810CA8)
+val ultravioletOnsible = Color(0xFFC147E9)
+val loveCloud = Color(0xFFE5B8F4)
+
+
+val Colors.splashBackgroundColor: Color
+    get() = if (isLight) {
+        loveCloud
+    } else {
+        midnightPurple
+    }
