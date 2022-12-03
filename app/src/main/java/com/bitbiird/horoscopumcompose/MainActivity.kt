@@ -7,7 +7,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.bitbiird.horoscopumcompose.navigation.SetUpNavigation
 import com.bitbiird.horoscopumcompose.ui.theme.HoroscopumComposeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
