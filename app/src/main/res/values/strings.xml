@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HoroscopumCompose</string>
+    <string name="app_name">Horoscopum</string>
 
     <!-- Signs -->
     <string name="capricorn">Capricorn</string>
