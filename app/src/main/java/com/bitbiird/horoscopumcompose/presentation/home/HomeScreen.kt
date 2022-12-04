@@ -35,11 +35,10 @@ fun HomeScreen(navController: NavController) {
         )
     )
 
-    Home(rotateAnim = angle,
+    Home(
+        rotateAnim = angle,
         onReadButtonClick = {
             navController.navigate(Screen.List.route)
-        }, onCompatibilityButtonClick = {
-            navController.navigate(Screen.CompatibilityList.route)
         })
 
 }
@@ -48,7 +47,6 @@ fun HomeScreen(navController: NavController) {
 fun Home(
     rotateAnim: Float,
     onReadButtonClick: () -> Unit,
-    onCompatibilityButtonClick: () -> Unit,
 ) {
     Box(
         Modifier.fillMaxSize()
@@ -60,7 +58,7 @@ fun Home(
                 .background(Color.Transparent)
                 .padding(vertical = 48.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
+            verticalArrangement = Arrangement.Center
         ) {
             Text(
                 stringResource(id = R.string.app_name),
@@ -80,25 +78,16 @@ fun Home(
                     .size(148.dp)
                     .rotate(rotateAnim)
             )
-            Spacer(modifier = Modifier.height(84.dp))
+            Spacer(modifier = Modifier.height(128.dp))
             Button(
                 onClick = onReadButtonClick,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 48.dp),
+                    .padding(horizontal = 48.dp)
+                    .padding(bottom = 48.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.homeButtonColor)
             ) {
                 Text(text = stringResource(id = R.string.button_read_my_horoscope_text), style = HoroscopumTypography.button)
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
-                onClick = onCompatibilityButtonClick,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 48.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.homeButtonColor)
-            ) {
-                Text(text = stringResource(id = R.string.button_sign_compatibility_text), style = HoroscopumTypography.button)
             }
         }
     }
@@ -107,5 +96,5 @@ fun Home(
 @Preview(showBackground = true)
 @Composable
 fun HomePreview() {
-    Home(0f, {}, {})
+    Home(0f) {}
 }

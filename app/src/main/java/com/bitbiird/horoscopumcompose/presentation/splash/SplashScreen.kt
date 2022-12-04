@@ -1,8 +1,6 @@
 package com.bitbiird.horoscopumcompose.presentation.splash
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -33,8 +31,11 @@ fun SplashScreen(
     }
 
     LaunchedEffect(key1 = true) {
+        delay(500)
         showSplashScreen = true
-        delay(1500)
+        delay(1000)
+        showSplashScreen = false
+        delay(500)
         navController.popBackStack()
         navController.navigate(Screen.Home.route)
     }
@@ -55,6 +56,7 @@ fun Splash(showSplashScreen: Boolean) {
         AnimatedVisibility(
             visible = showSplashScreen,
             enter = fadeIn() + slideInHorizontally(),
+            exit = fadeOut() + slideOutHorizontally{ (it / 2) }
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_constellations),
@@ -65,6 +67,7 @@ fun Splash(showSplashScreen: Boolean) {
         AnimatedVisibility(
             modifier = Modifier.fillMaxWidth().padding(top = 48.dp), visible = showSplashScreen,
             enter = fadeIn() + slideInHorizontally { (it / 2) },
+            exit = fadeOut() + slideOutHorizontally()
         ) {
             Text(
                 stringResource(id = R.string.app_name),
