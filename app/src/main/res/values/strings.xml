@@ -4,8 +4,8 @@
     <string name="app_name">Horoscopum</string>
 
     <!-- Home -->
-    <string name="button_read_my_horoscope_text">READ MY HOROSCOPE</string>
-    <string name="button_sign_compatibility_text">SIGN COMPATIBILITY</string>
+    <string name="search_your_sign_hint">Search your sign</string>
+    <string name="select_your_sign_text">Select your sign</string>
 
     <!-- Sign List -->
     <string name="horoscope_list_title">Select your sign</string>
