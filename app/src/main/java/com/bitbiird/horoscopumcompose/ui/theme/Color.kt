@@ -5,67 +5,62 @@ import androidx.compose.ui.graphics.Color
 
 // Default
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 // Black
 
 val black = Color(0xFF000000)
-val black50 = Color(0x80000000)
-val illicitDarkness = Color(0xFF00002c)
 
 // White
 
 val white = Color(0xFFFFFFFF)
-val compactDiscGrey = Color(0xFFCDCDCD)
 
-// Red
+// Light Palette
 
-val vineyardAutumn = Color(0xFFF04354)
+val winterSpringLilac = Color(0xFFB1B2FF)
+val nightSnow = Color(0xFFAAC4FF)
+val arcLight = Color(0xFFD2DAFF)
+val brilliantWhite = Color(0xFFEEF1FF)
 
-// Orange
+// Dark Palette
 
-val universityOfTennesseeOrange = Color(0xFFf98500)
-
-// Purple
-
-val magicCarpet = Color(0xFF9186BF)
-val swissPlum = Color(0xFF5f4bbc)
-val mediumSlateBlue = Color(0xFF8169F0)
-val blueGem = Color(0xFF49398F)
-val benikakehanaPurple = Color(0xFF595275)
-val midnightPurple = Color(0xFF2D033B)
-val shadeOfViolet = Color(0xFF810CA8)
-val ultravioletOnsible = Color(0xFFC147E9)
-val loveCloud = Color(0xFFE5B8F4)
-
+val americanBlue = Color(0xFF3F3B6C)
+val violetMajesty = Color(0xFF624F82)
+val karmaChameleon = Color(0xFF9F73AB)
+val blueDam = Color(0xFFA3C7D6)
 
 val Colors.splashBackgroundColor: Color
     get() = if (isLight) {
-        benikakehanaPurple
+        winterSpringLilac
     } else {
-        illicitDarkness
+        americanBlue
     }
 
-val Colors.homeButtonColor: Color
+val Colors.homeBackgroundColor: Color
     get() = if (isLight) {
-        mediumSlateBlue
+        winterSpringLilac
     } else {
-        swissPlum
+        americanBlue
+    }
+
+val Colors.homeTitleColor: Color
+    get() = if (isLight) {
+        americanBlue
+    } else {
+        winterSpringLilac
     }
 
 val Colors.cardColor: Color
     get() = if (isLight) {
-        loveCloud
+        arcLight
     } else {
-        blueGem
+        karmaChameleon
     }
 
 val Colors.cardTextColor: Color
     get() = if (isLight) {
-        Color.Black
+        americanBlue
     } else {
-        compactDiscGrey
+        winterSpringLilac
     }

@@ -22,13 +22,18 @@ val HoroscopumTypography = Typography(
         color = Color.White
     ),
     h2 = TextStyle(
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Normal,
         fontSize = 24.sp,
         color = Color.White
     ),
     h3 = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 18.sp,
+        color = Color.White
+    ),
+    h4 = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
         color = Color.White
     ),
     body1 = TextStyle(
