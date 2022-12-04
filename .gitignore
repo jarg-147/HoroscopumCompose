@@ -88,3 +88,6 @@ lint/tmp/
 /gradlew
 /gradlew.bat
 /.idea/deploymentTargetDropDown.xml
+/.idea/inspectionProfiles/
+/.idea/compiler.xml
+/.idea/misc.xml
