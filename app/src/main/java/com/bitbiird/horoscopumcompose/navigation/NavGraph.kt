@@ -7,7 +7,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.bitbiird.horoscopumcompose.presentation.home.HomeScreen
-import com.bitbiird.horoscopumcompose.presentation.list.SignsListScreen
 import com.bitbiird.horoscopumcompose.presentation.splash.SplashScreen
 import com.bitbiird.horoscopumcompose.util.constants.NavigationConstants.DETAIL_ARGUMENT_KEY
 
@@ -21,9 +20,6 @@ fun SetUpNavigation(navController: NavHostController) {
         }
         composable(route = Screen.Home.route) {
             HomeScreen(navController = navController)
-        }
-        composable(route = Screen.List.route) {
-           SignsListScreen(navController)
         }
         composable(
             route = Screen.Detail.route, arguments = listOf(navArgument(name = DETAIL_ARGUMENT_KEY) {
