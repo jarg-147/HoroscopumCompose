@@ -26,6 +26,11 @@ val HoroscopumTypography = Typography(
         fontSize = 24.sp,
         color = Color.White
     ),
+    h3 = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 18.sp,
+        color = Color.White
+    ),
     body1 = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 24.sp,
@@ -38,6 +43,11 @@ val HoroscopumTypography = Typography(
     ),
     button = TextStyle(
         fontWeight = FontWeight.Bold,
+        fontSize = 12.sp,
+        color = Color.White
+    ),
+    caption = TextStyle(
+        fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         color = Color.White
     )

@@ -55,3 +55,17 @@ val Colors.homeButtonColor: Color
     } else {
         swissPlum
     }
+
+val Colors.cardColor: Color
+    get() = if (isLight) {
+        loveCloud
+    } else {
+        blueGem
+    }
+
+val Colors.cardTextColor: Color
+    get() = if (isLight) {
+        Color.Black
+    } else {
+        compactDiscGrey
+    }
