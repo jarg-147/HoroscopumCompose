@@ -9,10 +9,13 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
@@ -76,8 +79,23 @@ fun Home(
                 .padding(top = 32.dp)
                 .padding(horizontal = 24.dp)
                 .focusRequester(focusRequester),
-            textStyle = HoroscopumTypography.h3,
+            textStyle = HoroscopumTypography.h3.copy(fontWeight = FontWeight.Bold),
             singleLine = true,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = MaterialTheme.colors.searchTextColor,
+                backgroundColor = MaterialTheme.colors.searchBackgroundColor
+            ),
+            trailingIcon = {
+                if (searchText.isNotBlank()) {
+                    IconButton(
+                        onClick = {
+                            searchText = ""
+                        },
+                        content = {
+                            Icon(imageVector = Icons.Default.Clear, contentDescription = "Clear icon")
+                        })
+                }
+            },
             label = {
                 Box {
                     Text(
@@ -142,12 +160,16 @@ fun SignsList(searchText: String, onSignClick: (signId: Int) -> Unit) {
 @Composable
 fun HoroscopeItem(modifier: Modifier, sign: HoroscopeSigns, onItemClick: (signId: Int) -> Unit) {
     Card(
-        elevation = 4.dp,
-        backgroundColor = MaterialTheme.colors.cardColor,
+        backgroundColor = MaterialTheme.colors.cardBackgroundColor,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         onClick = { onItemClick(sign.id) },
         modifier = modifier
             .fillMaxWidth()
+            .shadow(
+                elevation = 4.dp,
+                spotColor = MaterialTheme.colors.cardShadow,
+                shape = RoundedCornerShape(16.dp)
+            )
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(16.dp)) {
             Image(
