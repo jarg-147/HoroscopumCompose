@@ -1,7 +1,6 @@
 package com.bitbiird.horoscopumcompose.ui.theme
 
 import androidx.compose.material.Typography
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -18,42 +17,34 @@ val HoroscopumTypography = Typography(
     defaultFontFamily = HoroscopumFonts,
     h1 = TextStyle(
         fontWeight = FontWeight.Bold,
-        fontSize = 32.sp,
-        color = Color.White
+        fontSize = 32.sp
     ),
     h2 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 24.sp,
-        color = Color.White
+        fontSize = 24.sp
     ),
     h3 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 18.sp,
-        color = Color.White
+        fontSize = 18.sp
     ),
     h4 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
-        color = Color.White
+        fontSize = 14.sp
     ),
     body1 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 24.sp,
-        color = Color.White
+        fontSize = 24.sp
     ),
     body2 = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        color = Color.White
+        fontSize = 16.sp
     ),
     button = TextStyle(
         fontWeight = FontWeight.Bold,
-        fontSize = 12.sp,
-        color = Color.White
+        fontSize = 12.sp
     ),
     caption = TextStyle(
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp,
-        color = Color.White
+        fontSize = 12.sp
     )
 )

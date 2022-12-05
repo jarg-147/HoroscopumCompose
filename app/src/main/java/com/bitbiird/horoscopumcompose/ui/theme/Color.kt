@@ -51,11 +51,18 @@ val Colors.homeTitleColor: Color
         winterSpringLilac
     }
 
-val Colors.cardColor: Color
+val Colors.cardBackgroundColor: Color
     get() = if (isLight) {
         arcLight
     } else {
         karmaChameleon
+    }
+
+val Colors.cardShadow: Color
+    get() = if (isLight) {
+        violetMajesty
+    } else {
+        arcLight
     }
 
 val Colors.cardTextColor: Color
@@ -63,4 +70,25 @@ val Colors.cardTextColor: Color
         americanBlue
     } else {
         winterSpringLilac
+    }
+
+val Colors.searchBackgroundColor: Color
+    get() = if (isLight) {
+        arcLight
+    } else {
+        karmaChameleon
+    }
+
+val Colors.searchTextColor: Color
+    get() = if (isLight) {
+        americanBlue
+    } else {
+        winterSpringLilac
+    }
+
+val Colors.detailBackgroundColor: Color
+    get() = if (isLight) {
+        arcLight
+    } else {
+        karmaChameleon
     }
