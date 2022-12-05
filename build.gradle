@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        compose_version = '1.2.0'
+        compose_version = '1.2.0-alpha06'
         accompanist_version = '0.21.2-beta'
     }
     dependencies {
