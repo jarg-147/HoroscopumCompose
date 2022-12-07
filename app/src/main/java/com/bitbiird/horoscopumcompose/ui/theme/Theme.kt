@@ -6,26 +6,26 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
-private val DarkColorPalette = darkColors(
-    primary = winterSpringLilac,
-    primaryVariant = Purple700,
-    secondary = Teal200
-)
-
 private val LightColorPalette = lightColors(
-    primary = americanBlue,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    primary = winterSpringLilac,
+    primaryVariant = nightSnow,
+    onPrimary = brilliantWhite,
+    surface = nightSnow,
+    onSurface = brilliantWhite,
+    secondary = arcLight,
+    onSecondary = violetMajesty,
 )
+
+private val DarkColorPalette = darkColors(
+    primary = americanBlue,
+    primaryVariant = violetMajesty,
+    onPrimary = greyArea,
+    surface = violetMajesty,
+    onSurface = greyArea,
+    secondary = americanBlue,
+    onSecondary = greyArea,
+)
+
 
 @Composable
 fun HoroscopumComposeTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
