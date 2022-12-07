@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -53,8 +54,8 @@ fun Home(
     Column(
         Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.homeBackgroundColor)
-            .padding(top = 48.dp)
+            .background(MaterialTheme.colors.primary)
+            .padding(top = 56.dp)
             .clickable(interactionSource = interactionSource, indication = null) {
                 focusManager.clearFocus(force = true)
             },
@@ -66,10 +67,22 @@ fun Home(
             stringResource(id = R.string.app_name),
             style = HoroscopumTypography.h1,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.homeTitleColor,
+            color = MaterialTheme.colors.onPrimary,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp)
+        )
+
+        Text(
+            stringResource(id = R.string.daily_horoscope_text),
+            style = HoroscopumTypography.h4,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colors.onPrimary,
+            fontStyle = FontStyle.Italic,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+                .padding(top = 8.dp)
         )
 
         OutlinedTextField(
@@ -81,9 +94,12 @@ fun Home(
                 .focusRequester(focusRequester),
             textStyle = HoroscopumTypography.h3.copy(fontWeight = FontWeight.Bold),
             singleLine = true,
+            shape = MaterialTheme.shapes.medium,
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                textColor = MaterialTheme.colors.searchTextColor,
-                backgroundColor = MaterialTheme.colors.searchBackgroundColor
+                textColor = MaterialTheme.colors.onSurface,
+                backgroundColor = MaterialTheme.colors.surface,
+                focusedBorderColor = MaterialTheme.colors.onSurface,
+                cursorColor = MaterialTheme.colors.onSurface
             ),
             trailingIcon = {
                 if (searchText.isNotBlank()) {
@@ -101,7 +117,7 @@ fun Home(
                     Text(
                         text = stringResource(id = R.string.search_your_sign_hint),
                         style = HoroscopumTypography.h4,
-                        color = MaterialTheme.colors.homeTitleColor.copy(alpha = 0.8f),
+                        color = MaterialTheme.colors.onPrimary.copy(alpha = 0.8f),
                         textAlign = TextAlign.Start,
                         modifier = Modifier
                             .align(Center)
@@ -116,7 +132,7 @@ fun Home(
         Text(
             text = stringResource(id = R.string.select_your_sign_text),
             style = HoroscopumTypography.h2,
-            color = MaterialTheme.colors.homeTitleColor,
+            color = MaterialTheme.colors.onPrimary,
             modifier = Modifier
                 .padding(top = 24.dp)
                 .padding(horizontal = 24.dp)
@@ -160,14 +176,14 @@ fun SignsList(searchText: String, onSignClick: (signId: Int) -> Unit) {
 @Composable
 fun HoroscopeItem(modifier: Modifier, sign: HoroscopeSigns, onItemClick: (signId: Int) -> Unit) {
     Card(
-        backgroundColor = MaterialTheme.colors.cardBackgroundColor,
+        backgroundColor = MaterialTheme.colors.surface,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         onClick = { onItemClick(sign.id) },
         modifier = modifier
             .fillMaxWidth()
             .shadow(
                 elevation = 4.dp,
-                spotColor = MaterialTheme.colors.cardShadow,
+                spotColor = Color.Black,
                 shape = RoundedCornerShape(16.dp)
             )
     ) {
@@ -179,14 +195,14 @@ fun HoroscopeItem(modifier: Modifier, sign: HoroscopeSigns, onItemClick: (signId
             Text(
                 text = stringResource(id = sign.signName),
                 style = HoroscopumTypography.body2,
-                color = MaterialTheme.colors.cardTextColor,
+                color = MaterialTheme.colors.onSurface,
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = stringResource(id = sign.signDate),
                 style = HoroscopumTypography.caption,
-                color = MaterialTheme.colors.cardTextColor,
+                color = MaterialTheme.colors.onSurface,
                 fontStyle = FontStyle.Italic
             )
         }

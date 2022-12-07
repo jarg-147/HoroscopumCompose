@@ -19,7 +19,6 @@ import androidx.navigation.NavHostController
 import com.bitbiird.horoscopumcompose.R
 import com.bitbiird.horoscopumcompose.navigation.Screen
 import com.bitbiird.horoscopumcompose.ui.theme.HoroscopumTypography
-import com.bitbiird.horoscopumcompose.ui.theme.splashBackgroundColor
 import kotlinx.coroutines.delay
 
 @Composable
@@ -50,7 +49,7 @@ fun Splash(showSplashScreen: Boolean) {
     Column(
         Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.splashBackgroundColor),
+            .background(MaterialTheme.colors.primary),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
