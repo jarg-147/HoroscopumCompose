@@ -4,29 +4,12 @@
     <string name="app_name">Horoscopum</string>
 
     <!-- Home -->
+    <string name="daily_horoscope_text">Daily horoscope</string>
     <string name="search_your_sign_hint">Search your sign</string>
     <string name="select_your_sign_text">Select your sign</string>
 
-    <!-- Sign List -->
-    <string name="horoscope_list_title">Select your sign</string>
-
     <!-- Loading View -->
     <string name="loading_text">Loading your horoscope…</string>
-
-    <!-- Compatibility -->
-    <string name="compatibility_list_title">Select two signs to see their compatibility today</string>
-    <string name="compatibility_button_text">Check compatibility</string>
-    <string name="check_compatibility_again">Check again</string>
-
-    <string name="compatibility_very_low">Today %1s and %2s are not compatible…</string>
-    <string name="compatibility_low">Today %1s and %2s are not very compatible</string>
-    <string name="compatibility_mid">Today %1s and %2s are compatible</string>
-    <string name="compatibility_high">Today %1s and %2s are very compatible!</string>
-
-    <!-- TabLayout Strings -->
-    <string name="tomorrow">Tomorrow</string>
-    <string name="today">Today</string>
-    <string name="yesterday">Yesterday</string>
 
     <!-- Horoscope Detail -->
     <string name="current_date">Current Date:</string>
@@ -34,11 +17,13 @@
     <string name="lucky_time">Lucky Time:</string>
     <string name="lucky_number">Lucky Number:</string>
     <string name="description">Description</string>
-    <string name="sign_icon_animation">sign_icon_animation</string>
 
     <!-- Error -->
-    <string name="error_horoscope_data">Error loading the data, please try again later</string>
-    <string name="no_internet_data">You\'re offline, data could not be loaded.</string>
+    <string name="error_detail_title">Something went wrong…</string>
+    <string name="error_detail_api_text">Error loading the data, please try again</string>
+    <string name="error_detail_internet_text">You\'re offline, data could not be loaded.</string>
+    <string name="error_detail_retry_button">Retry</string>
+    <string name="error_detail_ok_button">OK</string>
 
     <!-- Signs -->
     <string name="capricorn">Capricorn</string>
