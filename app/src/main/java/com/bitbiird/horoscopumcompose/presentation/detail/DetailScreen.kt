@@ -1,5 +1,6 @@
 package com.bitbiird.horoscopumcompose.presentation.detail
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
@@ -68,17 +69,25 @@ fun DetailScreen(navController: NavController, signId: Int, viewModel: DetailScr
                     showDetailData = true
                 }
 
+                BackHandler {
+                    showDetailData = false
+                    showDetailHeader = false
+                    navController.popBackStack()
+                }
+
                 Detail(sign = sign, signHoroscopeData = response.data, showDetailHeader, showDetailData) {
                     showDetailData = false
                     showDetailHeader = false
                     navController.popBackStack()
                 }
+
             }
             is NetworkState.Error -> Error(ErrorType.API_ERROR) {
                 viewModel.init(signName)
             }
         }
     }
+
 
 }
 
