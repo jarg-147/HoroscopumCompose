@@ -42,7 +42,7 @@ fun HoroscopeData(horoscopeResponse: HoroscopeResponse?) {
 
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         Row(
             modifier = sharedModifier,
@@ -63,7 +63,7 @@ fun HoroscopeData(horoscopeResponse: HoroscopeResponse?) {
 
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
         InfoItem(
             header = stringResource(id = R.string.description),
