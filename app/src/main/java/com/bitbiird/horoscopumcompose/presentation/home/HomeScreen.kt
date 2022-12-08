@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
@@ -35,9 +33,11 @@ import com.bitbiird.horoscopumcompose.util.enums.HoroscopeSigns
 
 @Composable
 fun HomeScreen(navController: NavController) {
+
     Home(onSignCardClick = { signId ->
         navController.navigate(Screen.Detail.setHoroscopeSignId(signId))
     })
+
 }
 
 @Composable
@@ -51,34 +51,51 @@ fun Home(
     val focusManager = LocalFocusManager.current
     val interactionSource = remember { MutableInteractionSource() }
 
+    val paddingValues = WindowInsets.systemBars.asPaddingValues()
+
     Column(
-        Modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.primary)
-            .padding(top = 56.dp)
-            .clickable(interactionSource = interactionSource, indication = null) {
+            .padding(top = paddingValues.calculateTopPadding() + 16.dp)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null
+            ) {
                 focusManager.clearFocus(force = true)
             },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
+        HomeHeader(
+            searchText = searchText,
+            focusRequester = focusRequester,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+        ) { newText -> searchText = newText }
 
-        HomeHeader(searchText = searchText, focusRequester = focusRequester) { newText -> searchText = newText }
-        SignsList(searchText = searchText, onSignClick = onSignCardClick)
+        Spacer(modifier = Modifier.height(16.dp))
+
+        SignsList(
+            searchText = searchText,
+            onSignClick = onSignCardClick
+        )
     }
 }
 
 @Composable
-fun HomeHeader(searchText: String, focusRequester: FocusRequester, onSearchTextChanged: (newText: String) -> Unit) {
+fun HomeHeader(searchText: String, focusRequester: FocusRequester, modifier: Modifier, onSearchTextChanged: (newText: String) -> Unit) {
+
     Text(
         stringResource(id = R.string.app_name),
         style = HoroscopumTypography.h1,
         textAlign = TextAlign.Center,
         color = MaterialTheme.colors.onPrimary,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp)
+        modifier = modifier
     )
+
+    Spacer(modifier = modifier.height(8.dp))
 
     Text(
         stringResource(id = R.string.daily_horoscope_text),
@@ -86,18 +103,14 @@ fun HomeHeader(searchText: String, focusRequester: FocusRequester, onSearchTextC
         textAlign = TextAlign.Center,
         color = MaterialTheme.colors.onPrimary,
         fontStyle = FontStyle.Italic,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp)
-            .padding(top = 8.dp)
+        modifier = modifier
     )
+
+    Spacer(modifier = modifier.height(32.dp))
 
     OutlinedTextField(
         value = searchText,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 32.dp)
-            .padding(horizontal = 24.dp)
+        modifier = modifier
             .focusRequester(focusRequester),
         textStyle = HoroscopumTypography.h3.copy(fontWeight = FontWeight.Bold),
         singleLine = true,
@@ -136,14 +149,16 @@ fun HomeHeader(searchText: String, focusRequester: FocusRequester, onSearchTextC
         }
     )
 
+    Spacer(modifier = modifier.height(24.dp))
+
     Text(
         text = stringResource(id = R.string.select_your_sign_text),
         style = HoroscopumTypography.h2,
         color = MaterialTheme.colors.onPrimary,
-        modifier = Modifier
-            .padding(top = 24.dp)
-            .padding(horizontal = 24.dp)
+        textAlign = TextAlign.Center,
+        modifier = modifier
     )
+
 }
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -156,21 +171,20 @@ fun SignsList(searchText: String, onSignClick: (signId: Int) -> Unit) {
         HoroscopeSigns.values().filter { sign -> stringResource(id = sign.signName).contains(searchText, ignoreCase = true) }
     }
 
-    Column {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
-            horizontalArrangement = Arrangement.spacedBy(24.dp),
-            contentPadding = PaddingValues(bottom = 24.dp),
-            modifier = Modifier
-                .padding(horizontal = 24.dp)
-                .padding(bottom = 32.dp)
-                .padding(top = 16.dp)
-        ) {
-            items(itemsList, key = { it.id }) { item ->
-                HoroscopeItem(Modifier.animateItemPlacement(), item) { sign ->
-                    onSignClick(sign)
-                }
+    val paddingValues = WindowInsets.systemBars.asPaddingValues()
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+        horizontalArrangement = Arrangement.spacedBy(24.dp),
+        contentPadding = PaddingValues(vertical = 16.dp, horizontal = 24.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = paddingValues.calculateBottomPadding())
+    ) {
+        items(itemsList, key = { it.id }) { item ->
+            HoroscopeItem(Modifier.animateItemPlacement(), item) { sign ->
+                onSignClick(sign)
             }
         }
     }
@@ -179,36 +193,49 @@ fun SignsList(searchText: String, onSignClick: (signId: Int) -> Unit) {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HoroscopeItem(modifier: Modifier, sign: HoroscopeSigns, onItemClick: (signId: Int) -> Unit) {
+
     Card(
         backgroundColor = MaterialTheme.colors.surface,
-        shape = RoundedCornerShape(corner = CornerSize(16.dp)),
+        shape = MaterialTheme.shapes.large,
         onClick = { onItemClick(sign.id) },
         modifier = modifier
             .fillMaxWidth()
             .shadow(
                 elevation = 4.dp,
                 spotColor = Color.Black,
-                shape = RoundedCornerShape(16.dp)
+                shape = MaterialTheme.shapes.large
             )
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(16.dp)) {
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(16.dp)
+        ) {
+
             Image(
-                painter = painterResource(id = sign.signIcon), contentDescription = "Sign icon", Modifier.size(56.dp)
+                painter = painterResource(id = sign.signIcon),
+                contentDescription = "Sign icon",
+                modifier = Modifier.size(56.dp)
             )
+
             Spacer(modifier = Modifier.height(16.dp))
+
             Text(
                 text = stringResource(id = sign.signName),
                 style = HoroscopumTypography.body2,
                 color = MaterialTheme.colors.onSurface,
                 fontWeight = FontWeight.Bold
             )
+
             Spacer(modifier = Modifier.height(8.dp))
+
             Text(
                 text = stringResource(id = sign.signDate),
                 style = HoroscopumTypography.caption,
                 color = MaterialTheme.colors.onSurface,
                 fontStyle = FontStyle.Italic
             )
+
         }
     }
 }

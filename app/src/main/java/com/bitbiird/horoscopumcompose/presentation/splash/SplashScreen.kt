@@ -57,7 +57,7 @@ fun Splash(showSplashScreen: Boolean) {
         AnimatedVisibility(
             visible = showSplashScreen,
             enter = fadeIn() + slideInHorizontally(),
-            exit = fadeOut() + slideOutHorizontally{ (it / 2) }
+            exit = fadeOut() + slideOutHorizontally { (it / 2) }
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_constellations),
@@ -67,18 +67,19 @@ fun Splash(showSplashScreen: Boolean) {
         }
 
         AnimatedVisibility(
-            modifier = Modifier.fillMaxWidth().padding(top = 48.dp), visible = showSplashScreen,
+            visible = showSplashScreen,
             enter = fadeIn() + slideInHorizontally { (it / 2) },
             exit = fadeOut() + slideOutHorizontally()
         ) {
             Text(
-                stringResource(id = R.string.app_name),
+                text = stringResource(id = R.string.app_name),
                 style = HoroscopumTypography.h1,
                 color = Color.White,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp)
+                    .padding(top = 48.dp)
             )
         }
 
