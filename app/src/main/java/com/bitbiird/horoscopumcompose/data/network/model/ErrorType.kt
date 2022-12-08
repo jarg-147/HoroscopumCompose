@@ -1,4 +1,4 @@
-package com.bitbiird.horoscopumcompose.data.model
+package com.bitbiird.horoscopumcompose.data.network.model
 
 enum class ErrorType {
     NO_INTERNET_ERROR,

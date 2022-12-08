@@ -29,9 +29,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.bitbiird.horoscopumcompose.R
-import com.bitbiird.horoscopumcompose.data.model.ErrorType
 import com.bitbiird.horoscopumcompose.data.model.HoroscopeResponse
-import com.bitbiird.horoscopumcompose.data.model.NetworkState
+import com.bitbiird.horoscopumcompose.data.network.model.ErrorType
+import com.bitbiird.horoscopumcompose.data.network.model.NetworkState
 import com.bitbiird.horoscopumcompose.ui.theme.HoroscopumTypography
 import com.bitbiird.horoscopumcompose.util.constants.Day
 import com.bitbiird.horoscopumcompose.util.enums.HoroscopeSigns
@@ -82,7 +82,7 @@ fun DetailScreen(navController: NavController, signId: Int, viewModel: DetailScr
                 }
 
             }
-            is NetworkState.Error -> Error(ErrorType.API_ERROR) {
+            is NetworkState.Error -> Error(response.error) {
                 viewModel.init(signName)
             }
         }

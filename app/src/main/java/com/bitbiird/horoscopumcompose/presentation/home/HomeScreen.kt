@@ -63,83 +63,87 @@ fun Home(
         verticalArrangement = Arrangement.Top
     ) {
 
-        Text(
-            stringResource(id = R.string.app_name),
-            style = HoroscopumTypography.h1,
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.onPrimary,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-        )
-
-        Text(
-            stringResource(id = R.string.daily_horoscope_text),
-            style = HoroscopumTypography.h4,
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.onPrimary,
-            fontStyle = FontStyle.Italic,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-                .padding(top = 8.dp)
-        )
-
-        OutlinedTextField(
-            value = searchText,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 32.dp)
-                .padding(horizontal = 24.dp)
-                .focusRequester(focusRequester),
-            textStyle = HoroscopumTypography.h3.copy(fontWeight = FontWeight.Bold),
-            singleLine = true,
-            shape = MaterialTheme.shapes.medium,
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                textColor = MaterialTheme.colors.onSurface,
-                backgroundColor = MaterialTheme.colors.surface,
-                focusedBorderColor = MaterialTheme.colors.onSurface,
-                cursorColor = MaterialTheme.colors.onSurface
-            ),
-            trailingIcon = {
-                if (searchText.isNotBlank()) {
-                    IconButton(
-                        onClick = {
-                            searchText = ""
-                        },
-                        content = {
-                            Icon(imageVector = Icons.Default.Clear, contentDescription = "Clear icon")
-                        })
-                }
-            },
-            label = {
-                Box {
-                    Text(
-                        text = stringResource(id = R.string.search_your_sign_hint),
-                        style = HoroscopumTypography.h4,
-                        color = MaterialTheme.colors.onPrimary.copy(alpha = 0.8f),
-                        textAlign = TextAlign.Start,
-                        modifier = Modifier
-                            .align(Center)
-                    )
-                }
-            },
-            onValueChange = { newText ->
-                searchText = newText
-            }
-        )
-
-        Text(
-            text = stringResource(id = R.string.select_your_sign_text),
-            style = HoroscopumTypography.h2,
-            color = MaterialTheme.colors.onPrimary,
-            modifier = Modifier
-                .padding(top = 24.dp)
-                .padding(horizontal = 24.dp)
-        )
-
+        HomeHeader(searchText = searchText, focusRequester = focusRequester) { newText -> searchText = newText }
         SignsList(searchText = searchText, onSignClick = onSignCardClick)
     }
+}
+
+@Composable
+fun HomeHeader(searchText: String, focusRequester: FocusRequester, onSearchTextChanged: (newText: String) -> Unit) {
+    Text(
+        stringResource(id = R.string.app_name),
+        style = HoroscopumTypography.h1,
+        textAlign = TextAlign.Center,
+        color = MaterialTheme.colors.onPrimary,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp)
+    )
+
+    Text(
+        stringResource(id = R.string.daily_horoscope_text),
+        style = HoroscopumTypography.h4,
+        textAlign = TextAlign.Center,
+        color = MaterialTheme.colors.onPrimary,
+        fontStyle = FontStyle.Italic,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp)
+            .padding(top = 8.dp)
+    )
+
+    OutlinedTextField(
+        value = searchText,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 32.dp)
+            .padding(horizontal = 24.dp)
+            .focusRequester(focusRequester),
+        textStyle = HoroscopumTypography.h3.copy(fontWeight = FontWeight.Bold),
+        singleLine = true,
+        shape = MaterialTheme.shapes.medium,
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = MaterialTheme.colors.onSurface,
+            backgroundColor = MaterialTheme.colors.surface,
+            focusedBorderColor = MaterialTheme.colors.onSurface,
+            cursorColor = MaterialTheme.colors.onSurface
+        ),
+        trailingIcon = {
+            if (searchText.isNotBlank()) {
+                IconButton(
+                    onClick = {
+                        onSearchTextChanged("")
+                    },
+                    content = {
+                        Icon(imageVector = Icons.Default.Clear, contentDescription = "Clear icon")
+                    })
+            }
+        },
+        label = {
+            Box {
+                Text(
+                    text = stringResource(id = R.string.search_your_sign_hint),
+                    style = HoroscopumTypography.h4,
+                    color = MaterialTheme.colors.onPrimary.copy(alpha = 0.8f),
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .align(Center)
+                )
+            }
+        },
+        onValueChange = { newText ->
+            onSearchTextChanged(newText)
+        }
+    )
+
+    Text(
+        text = stringResource(id = R.string.select_your_sign_text),
+        style = HoroscopumTypography.h2,
+        color = MaterialTheme.colors.onPrimary,
+        modifier = Modifier
+            .padding(top = 24.dp)
+            .padding(horizontal = 24.dp)
+    )
 }
 
 @OptIn(ExperimentalFoundationApi::class)

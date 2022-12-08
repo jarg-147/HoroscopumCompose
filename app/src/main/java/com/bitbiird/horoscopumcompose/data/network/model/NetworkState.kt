@@ -1,5 +1,6 @@
-package com.bitbiird.horoscopumcompose.data.model
+package com.bitbiird.horoscopumcompose.data.network.model
 
+import com.bitbiird.horoscopumcompose.data.model.HoroscopeResponse
 import com.bitbiird.horoscopumcompose.util.constants.Day
 
 sealed class NetworkState<out T : Any> {

@@ -53,6 +53,7 @@ fun Splash(showSplashScreen: Boolean) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         AnimatedVisibility(
             visible = showSplashScreen,
             enter = fadeIn() + slideInHorizontally(),
@@ -64,6 +65,7 @@ fun Splash(showSplashScreen: Boolean) {
                 modifier = Modifier.size(86.dp)
             )
         }
+
         AnimatedVisibility(
             modifier = Modifier.fillMaxWidth().padding(top = 48.dp), visible = showSplashScreen,
             enter = fadeIn() + slideInHorizontally { (it / 2) },
@@ -79,6 +81,7 @@ fun Splash(showSplashScreen: Boolean) {
                     .padding(horizontal = 24.dp)
             )
         }
+
     }
 }
 

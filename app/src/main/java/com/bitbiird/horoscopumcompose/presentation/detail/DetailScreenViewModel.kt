@@ -2,9 +2,9 @@ package com.bitbiird.horoscopumcompose.presentation.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bitbiird.horoscopumcompose.data.model.ErrorType
 import com.bitbiird.horoscopumcompose.data.model.HoroscopeResponse
-import com.bitbiird.horoscopumcompose.data.model.NetworkState
+import com.bitbiird.horoscopumcompose.data.network.model.ErrorType
+import com.bitbiird.horoscopumcompose.data.network.model.NetworkState
 import com.bitbiird.horoscopumcompose.domain.useCase.GetHoroscopeDataUseCase
 import com.bitbiird.horoscopumcompose.util.constants.Day
 import com.bitbiird.horoscopumcompose.util.helpers.InternetConnectionHelper
@@ -34,10 +34,10 @@ class DetailScreenViewModel @Inject constructor(
                 if (result.isNotEmpty() && result.values.all { it != null }) {
                     _horoscopeDataState.value = NetworkState.Success<Map<Day, HoroscopeResponse>>(result)
                 } else {
-                    _horoscopeDataState.value = NetworkState.Error(ErrorType.NO_INTERNET_ERROR)
+                    _horoscopeDataState.value = NetworkState.Error(ErrorType.API_ERROR)
                 }
             } else {
-                _horoscopeDataState.value = NetworkState.Error(ErrorType.API_ERROR)
+                _horoscopeDataState.value = NetworkState.Error(ErrorType.NO_INTERNET_ERROR)
             }
 
         }
