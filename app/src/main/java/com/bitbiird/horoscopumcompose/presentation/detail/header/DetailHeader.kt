@@ -42,7 +42,7 @@ fun DetailHeader(sign: HoroscopeSigns) {
 
         Text(
             text = stringResource(id = sign.signDate),
-            style = HoroscopumTypography.caption,
+            style = HoroscopumTypography.h4,
             color = MaterialTheme.colors.onSurface,
             fontStyle = FontStyle.Italic
         )
