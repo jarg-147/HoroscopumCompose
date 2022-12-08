@@ -58,7 +58,6 @@ fun Home(
             .fillMaxSize()
             .background(MaterialTheme.colors.primary)
             .padding(top = paddingValues.calculateTopPadding() + 16.dp)
-            .padding(horizontal = 24.dp)
             .clickable(
                 interactionSource = interactionSource,
                 indication = null
@@ -68,11 +67,20 @@ fun Home(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        HomeHeader(searchText = searchText, focusRequester = focusRequester, modifier = Modifier.fillMaxWidth()) { newText -> searchText = newText }
+        HomeHeader(
+            searchText = searchText,
+            focusRequester = focusRequester,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+        ) { newText -> searchText = newText }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        SignsList(searchText = searchText, onSignClick = onSignCardClick, modifier = Modifier.fillMaxWidth())
+        SignsList(
+            searchText = searchText,
+            onSignClick = onSignCardClick
+        )
     }
 }
 
@@ -155,7 +163,7 @@ fun HomeHeader(searchText: String, focusRequester: FocusRequester, modifier: Mod
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SignsList(searchText: String, modifier: Modifier, onSignClick: (signId: Int) -> Unit) {
+fun SignsList(searchText: String, onSignClick: (signId: Int) -> Unit) {
 
     val itemsList = if (searchText.isBlank()) {
         HoroscopeSigns.values().toList()
@@ -165,19 +173,18 @@ fun SignsList(searchText: String, modifier: Modifier, onSignClick: (signId: Int)
 
     val paddingValues = WindowInsets.systemBars.asPaddingValues()
 
-    Column(modifier = modifier) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
-            horizontalArrangement = Arrangement.spacedBy(24.dp),
-            contentPadding = PaddingValues(vertical = 16.dp),
-            modifier = Modifier
-                .padding(bottom = paddingValues.calculateBottomPadding())
-        ) {
-            items(itemsList, key = { it.id }) { item ->
-                HoroscopeItem(Modifier.animateItemPlacement(), item) { sign ->
-                    onSignClick(sign)
-                }
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+        horizontalArrangement = Arrangement.spacedBy(24.dp),
+        contentPadding = PaddingValues(vertical = 16.dp, horizontal = 24.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = paddingValues.calculateBottomPadding())
+    ) {
+        items(itemsList, key = { it.id }) { item ->
+            HoroscopeItem(Modifier.animateItemPlacement(), item) { sign ->
+                onSignClick(sign)
             }
         }
     }
