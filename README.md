@@ -6,7 +6,7 @@ I have used a Clean MVVM architecture, separated by layers.
 * Data  -> Data class models, database and API calls (service and repository).
 * DI -> Dependency injection modules. 
 * Domain -> Use cases and business logic.
-* Presentation -> Views and ViewModels.
+* Presentation -> Screens and ViewModels.
 
 ## Libraries 📚
 
