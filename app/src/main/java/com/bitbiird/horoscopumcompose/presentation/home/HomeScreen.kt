@@ -79,8 +79,10 @@ fun Home(
 
         SignsList(
             searchText = searchText,
-            onSignClick = onSignCardClick
-        )
+            onSignClick = { signId ->
+                onSignCardClick(signId)
+                focusManager.clearFocus(force = true)
+            })
     }
 }
 
